@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Athletes</h1>
+        <a href="#" id="add-link">Add</a>
+    </header>
+
+    <div class="cols two cols">
+        <div id ="athlete-list" class="cols"></div>
+        <div id ="athlete-details-column">
+            <h2>Details</h2>
+
+            <div id="athlete-details"></div>
+        </div>
+    </div>
+    <div id="add-edit-athlete-container" class="dialog transparent">
+        <span class="close">&times;</span>
+
+        <h3 id="add-edit-title">Athlete</h3>
+        <form id="add-edit-athlete-form" method="post">
+            <input type="hidden" name="_id" value="-1" />
+            <p>
+                <label for="name ">Athlete Name:</label>
+                <input type="text" id="name" name="name" required />
+            </p>
+            <p>
+                <label for="name ">Sport:</label>
+                <input type="text" id="sport" name="sport" required />
+            </p>
+            <p>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required />
+            </p>
+            <p>
+                <label for="img">Upload Image: </label>
+                <input type="file" id="img" name="img" />
+            </p>
+
+            <p id="awards-p">
+                <label class="inline">Awards:</label>
+                <a href="#" id="add-award">Add Award</a>
+                <section id="award-boxes"></section>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
