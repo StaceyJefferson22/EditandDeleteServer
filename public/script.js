@@ -54,7 +54,8 @@ const displayDetails = (athlete) => {
 
     const p = document.createElement("p");
     athleteDetails.append(p);
-    p.innerHTML = athlete.description;
+    p.innerHTML = "Sport: " + athlete.sport;
+    p.innerHTML += "<br>Description: " + athlete.description;
 
     const ul = document.createElement("ul");
     athleteDetails.append(ul);
@@ -64,6 +65,7 @@ const displayDetails = (athlete) => {
         ul.append(li);
         li.innerHTML = award;
     });
+
 
     eLink.onclick = (e) => {
         e.preventDefault();
@@ -80,7 +82,7 @@ const displayDetails = (athlete) => {
 };
 
 const deleteAthlete = async(athlete) => {
-    let response = await fetch('/api/athletes/${athlete._id}', {
+    let response = await fetch(`/api/athletes/${athlete._id} `, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json;charset=utf-8"
@@ -103,10 +105,10 @@ const populateEditForm = (athlete) => {
     form._id.value = athlete._id;
     form.name.value = athlete.name;
     form.description.value = athlete.description;
-    populateAward(athlete)
+    populateAward(athlete);
 };
 
-const populateAward = (award) => {
+const populateAward = (athlete) => {
     const section = document.getElementById("award-boxes");
 
     athlete.awards.forEach((award) => {

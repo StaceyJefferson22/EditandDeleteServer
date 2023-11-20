@@ -14,9 +14,15 @@ body{
 }
 
 .athlete img {
-    max-width: 90%;
+    max-width: 70%;
+    max-height: 200px;
     display: block;
     margin: auto;
+}
+
+.athlete-details {
+    width: 300px;
+    height: 100px;
 }
 
 #athlete-details-column {
@@ -36,7 +42,11 @@ body{
     margin-right: 10px;
 }
 
-#delete-link{
+#delete-link {
+    float: right;
+}
+
+#add-edit-athlete-container{
     padding: 10px;
     margin: 10px;
     background: royalblue;
@@ -136,15 +146,16 @@ a{
 
 /*Larger Resolution */
 @media (min-width: 600px) {
-    .col {
+    .columns {
         display: flex;
-        flex-wrap: wrapl
+        flex-wrap: wrap;
     }
-    .two-col div {
-        flex: 1;
+    .two-columns div {
+        flex: 2;
     }
     .athlete{
-        width: 25%;
+        width: 30%;
+        justify-content: center;
     }
     #add-edit-athlete-container{
         background-color: red;
