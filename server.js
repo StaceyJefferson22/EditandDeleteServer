@@ -135,11 +135,11 @@ app.post("/api/athletes", upload.single("img"), (req, res) => {
     }
 
     athletes.push(athlete);
-    res.send(athlete);
+    res.send(athletes);
 });
 
 app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
-    console.log("input");
+    //console.log("input");
     const id = parseInt(req.params.id);
 
     const athlete = athletes.find((r) => r._id === id);;

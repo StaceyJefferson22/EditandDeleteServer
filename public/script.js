@@ -129,6 +129,8 @@ const addEditAthlete = async(e) => {
 
     if (form._id.value == -1) {
         formData.delete("_id");
+        console.log("Showing in add");
+        console.log(...formData);
 
         response = await fetch("/api/athletes", {
             method: "POST",
@@ -164,10 +166,12 @@ const addEditAthlete = async(e) => {
 };
 
 const getAwards = () => {
-    const inputs = document.querySelectorAll("#athlete-boxes input");
+    const inputs = document.querySelectorAll("#award-boxes input");
     let awards = [];
+    console.log("getAwards()");
 
     inputs.forEach((input) => {
+        console.log("INPUT" + input.value);
         awards.push(input.value);
     });
 
@@ -211,4 +215,4 @@ window.onload = () => {
 //Add works
 //Edit works
 //Delete works
-//need to figure out why it awards don't show
+//need to figure out why awards don't show up for add and edit
