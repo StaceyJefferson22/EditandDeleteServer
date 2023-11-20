@@ -98,7 +98,7 @@ let athletes = [{
     },
 ];
 
-app.get("/api/athletes", (req,res) => {
+app.get("/api/athletes", (req, res) => {
     res.send(athletes);
 });
 
@@ -113,6 +113,7 @@ app.post("/api/athletes", upload.single("img"), (req, res) => {
     const athlete = {
         _id: athletes.length + 1,
         name: req.body.name,
+        sport: req.body.sport,
         description: req.body.description,
         awards: req.body.awards.split(",")
     }
@@ -127,7 +128,7 @@ app.post("/api/athletes", upload.single("img"), (req, res) => {
 
 app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
     const id = parseInt(req.params.id);
-    const athlete = athlete.find((r) => r._id === id);;
+    const athlete = athletes.find((r) => r._id === id);;
     const result = validateAthlete(req.body);
 
     if(result.error) {
@@ -135,8 +136,10 @@ app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
         return;
     }
 
-    //console.log(req.body.awards);
+    console.log(req.body.awards);
+    
     athlete.name = req.body.name;
+    athlete.sport = req.body.sport;
     athlete.description = req.body.description;
     athlete.awards = req.body.awards.split(",");
 
@@ -164,6 +167,7 @@ app.delete("/api/athletes/:id", upload.single("img"), (req,res) =>{
 const validateAthlete = (athlete) => {
     const schema = Joi.object({
         _id: Joi.allow(""),
+        sport: Joi.allow(""),
         awards: Joi.allow(""),
         name: Joi.string().min(3).required(),
         description: Joi.string().min(3).required()

@@ -7,9 +7,10 @@ body{
 }
 
 .athlete {
+    text-align: center;
     padding: 10px;
     margin: 10px;
-    background: royalblue;
+    background: red;
     border-radius: 5px;
 }
 
@@ -28,7 +29,7 @@ body{
 #athlete-details-column {
     padding: 10px;
     margin: 10px;
-    background: royalblue;
+    background: red;
     border-radius: 5px;
 }
 
@@ -49,7 +50,7 @@ body{
 #add-edit-athlete-container{
     padding: 10px;
     margin: 10px;
-    background: royalblue;
+    background: red;
     border-radius: 5px;
 }
 
@@ -133,7 +134,7 @@ h1{
 
 a{
     text-decoration: none;
-    color: red;
+    color: black;
 }
 
 .hidden{
@@ -144,14 +145,28 @@ a{
     opacity: 0;
 }
 
+/* column */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.two-columns div {
+    flex: 1;
+    justify-content: center;
+}
+
+
 /*Larger Resolution */
 @media (min-width: 600px) {
     .columns {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .two-columns div {
-        flex: 2;
+        flex: 1;
+        justify-content: center;
     }
     .athlete{
         width: 30%;

@@ -103,7 +103,9 @@ const deleteAthlete = async(athlete) => {
 const populateEditForm = (athlete) => {
     const form = document.getElementById("add-edit-athlete-form");
     form._id.value = athlete._id;
+    form.sport.value = athlete.sport;
     form.name.value = athlete.name;
+   /* form.awards.value = athlete.awards;*/
     form.description.value = athlete.description;
     populateAward(athlete);
 };
@@ -131,14 +133,15 @@ const addEditAthlete = async(e) => {
 
         response = await fetch("/api/athletes", {
             method: "POST",
-            body: FormData
+            body: formData
         });
     }
+
     else {
 
         console.log(...formData);
 
-        response = await fetch('/api/athletes/${form._id.value}', {
+        response = await fetch(`/api/athletes/${form._id.value}`, {
             method: "PUT",
             body: formData
         });
