@@ -136,7 +136,7 @@ app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
         return;
     }
 
-    //console.log(req.body.awards);
+    console.log(req.body.awards);
     
     athlete.name = req.body.name;
     athlete.sport = req.body.sport;
