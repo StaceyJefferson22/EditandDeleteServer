@@ -105,9 +105,8 @@ const populateEditForm = (athlete) => {
     form._id.value = athlete._id;
     form.sport.value = athlete.sport;
     form.name.value = athlete.name;
-   /* form.awards.value = athlete.awards;*/
     form.description.value = athlete.description;
-    populateAward(athlete);
+    populateAward(athlete)
 };
 
 const populateAward = (athlete) => {
@@ -118,7 +117,7 @@ const populateAward = (athlete) => {
         input.type = "text";
         input.value = award;
         section.append(input);
-    });
+    })
 }
 
 const addEditAthlete = async(e) => {
@@ -133,7 +132,7 @@ const addEditAthlete = async(e) => {
 
         response = await fetch("/api/athletes", {
             method: "POST",
-            body: formData
+            body: formData,
         });
     }
 
@@ -143,7 +142,7 @@ const addEditAthlete = async(e) => {
 
         response = await fetch(`/api/athletes/${form._id.value}`, {
             method: "PUT",
-            body: formData
+            body: formData,
         });
     }
 
@@ -152,6 +151,7 @@ const addEditAthlete = async(e) => {
         console.log("Error posting data");
     }
 
+    //response 
     athlete = await response.json();
 
     if(form._id.value != -1) {
@@ -207,3 +207,8 @@ window.onload = () => {
 
     document.getElementById("add-award").onclick = addAward;
 };
+
+//Add works
+//Edit works
+//Delete works
+//need to figure out why it awards don't show

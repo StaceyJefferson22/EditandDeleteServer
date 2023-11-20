@@ -102,6 +102,18 @@ app.get("/api/athletes", (req, res) => {
     res.send(athletes);
 });
 
+app.get("api/athletes/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const athlete = athletes.find((r) => r._id === id);
+
+    if(!athlete){
+        res.status(404).send("The athlete with the given id was not found");
+    }
+
+    res.send(athletes);
+});
+
 app.post("/api/athletes", upload.single("img"), (req, res) => {
     const result = validateAthlete(req.body);
 
@@ -123,12 +135,15 @@ app.post("/api/athletes", upload.single("img"), (req, res) => {
     }
 
     athletes.push(athlete);
-    res.send(athletes);
+    res.send(athlete);
 });
 
 app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
+    console.log("input");
     const id = parseInt(req.params.id);
+
     const athlete = athletes.find((r) => r._id === id);;
+
     const result = validateAthlete(req.body);
 
     if(result.error) {
@@ -136,7 +151,7 @@ app.put("/api/athletes/:id", upload.single("img"), (req, res) => {
         return;
     }
 
-    console.log(req.body.awards);
+    //console.log(req.body.awards);
     
     athlete.name = req.body.name;
     athlete.sport = req.body.sport;
